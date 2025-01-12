@@ -1,0 +1,1 @@
+deb [arch=armhf signed-by=/etc/apt/trusted.gpg.d/pgp-key.public] http://rpi-mgmt.labs.lenovo.com:8000/apt-repo stable main

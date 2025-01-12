@@ -1,0 +1,70 @@
+# Hostname and User Configuration
+hostname: "rpi-uefi-27"
+password: "UEFIDebug27"
+
+# Network Configuration
+network:
+  mode: "open" # Options: "open" or "closed"
+  open:
+    address: "10.243.19.143"
+    netmask: "255.255.224.0"
+    gateway: "10.243.0.1"
+  closed:
+    address: "10.243.19.142"
+    netmask: "255.255.252.0"
+    gateway: "10.240.44.1"
+  nameservers:
+    - "10.240.2.21"
+    - "10.240.2.27"
+  search_domain: "labs.lenovo.com"
+
+# SSH Configuration
+ssh:
+  enable: true
+  start: true
+  authorized_keys:
+    - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAMrLwQDWevyKIP4Zkhz49MS+HMzH2+yetHFimTVf/LM rpill-syncer"
+
+# RPill Configuration
+rpill_config:
+  pgp_key: "pgp-key.public"
+  rpill_list: "rpill.list"
+  rpill_dir: "~/.rpill"
+  backup_dir: "~/rpill-backups"
+
+# Packages to Install
+packages: []
+
+# Vim Configuration Content
+vimrc_content: |
+  set background=dark
+  filetype plugin indent on
+  set tabstop=4
+  set shiftwidth=4
+  set expandtab
+  set shortmess+=F
+  set belloff=all
+  set mouse-=a
+
+# Bash Alias Configuration
+bashrc_content: |
+  # VIM Aliases
+  alias vi='vim'
+
+# Message of the Day (motd) Content
+motd_content: |
+  # Custom motd content after removing default disclaimers
+
+# WiFi Check Script Modification
+wifi_check:
+  modify_script: true
+  script_path: "/etc/profile.d/wifi-check.sh"
+
+# File Verification for rpill
+file_check:
+  files:
+    - "rpill.list"
+    - "pgp-key.public"
+  destination:
+    "rpill.list": "/etc/apt/sources.list.d/"
+    "pgp-key.public": "/etc/apt/trusted.gpg.d/"
